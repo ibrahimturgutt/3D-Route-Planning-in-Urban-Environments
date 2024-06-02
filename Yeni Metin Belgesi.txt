@@ -1,0 +1,20 @@
+  b = 0.99986
+    e = 0.01671
+    a = b/np.sqrt(1-e**2)
+    p = 13
+    alpha = np.arctan((gdf.iloc[-1]['Latitude']-gdf.iloc[0]['Latitude'])/(gdf.iloc[-1]['Longitude']-gdf.iloc[0]['Longitude']))
+    N = a/(np.sqrt(1-(e**2)*np.sin(gdf['Latitude'])**2))
+        
+    
+    lat1 = (np.arctan(gdf['Heights']/(1-e**2)*p))*np.cos(alpha)/111000
+    lon1 = alpha/111000#(np.arctan(np.cos(alpha)/np.sin(alpha)))/1000
+    h1 = ((1-e**2)*N+gdf['Heights'])*np.sin(gdf['Latitude'])
+    
+    x1 = pd.concat([gdf['Longitude']-lon1, gdf['Longitude']+lon1], axis=0, join='inner')
+    y1 = pd.concat([gdf['Latitude']+lat1, gdf['Latitude']-lat1], axis=0, join='inner')
+    z = (h1/np.sin(gdf['Latitude']))-(1-e**2)*N
+    pht = (10/np.sin(gdf['Latitude']))-(1-e**2)*N
+    ph1 = (8/np.sin(gdf['Latitude']))-(1-e**2)*N
+    ph2 = (1.5/np.sin(gdf['Latitude']))-(1-e**2)*N
+    ph3 = (0.5/np.sin(gdf['Latitude']))-(1-e**2)*N
+    z1 = pd.concat([z-pht, z+pht], axis=0, join='inner')
