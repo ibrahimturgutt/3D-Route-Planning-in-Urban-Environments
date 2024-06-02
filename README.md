@@ -10,7 +10,7 @@ The research focuses on developing a route planning algorithm for Unmanned Aeria
 
 ## Contents
 
-- *Code: Implementation of the A search algorithm in Python for UAV path planning.
+- *Code: Implementation of the A* search algorithm in Python for UAV path planning.
 - *Data*: Sample datasets provided by Spirent Communications, including GNSS performance metrics for urban environments.
 - *Documentation*: Detailed documentation of the algorithm, methodology, and experimental results.
 
